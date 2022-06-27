@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamRealmDb.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:entity="clr-namespace:XamRealmDb.Entities"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:vm="clr-namespace:XamRealmDb.ViewModels"
+    x:DataType="vm:MainViewModel">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding UpdateValueCommand}" Text="Update" />
+        <ToolbarItem Command="{Binding RefreshValuesCommand}" Text="Refesh" />
+    </ContentPage.ToolbarItems>
+
+    <ListView
+        ios:ListView.RowAnimationsEnabled="True"
+        ios:ListView.SeparatorStyle="FullWidth"
+        ItemsSource="{Binding Items}">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="entity:ItemEntity">
+                <TextCell Text="{Binding Value}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
